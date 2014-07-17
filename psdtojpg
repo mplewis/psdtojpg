@@ -13,6 +13,7 @@ DEFAULT_RESIZED_FOLDER = 'Converted/Resized'
 JPG_EXTENSION = '.jpg'
 OUTPUT_QUALITY = 80
 IMAGEOPTIM_CMD = 'imageOptim -d %s'
+CONVERT_TO_CHAR = '→'
 
 
 def check_negative(value):
@@ -100,8 +101,7 @@ def downsize_by_width(*, width, height, new_width):
 
 def convert_psd_to_jpg(psd_path, jpg_path, *,
                        quality, max_width=None, max_height=None):
-    print('Converting %s to %s with max width of %s and max height of %s' %
-          (psd_path, jpg_path, max_width, max_height))
+    print('%s %s %s' % (psd_path, CONVERT_TO_CHAR, jpg_path))
 
     img = PSDImage.load(psd_path).as_PIL()
     width, height = img.size
