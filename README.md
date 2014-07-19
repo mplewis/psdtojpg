@@ -37,7 +37,7 @@ After this, run `psdtojpg --help` from your terminal to verify it's installed pr
 
 `psdtojpg -w 640 -t 480 -g orig -r thumb/sm my_file.psd` converts `my_file.psd` to the original size JPG `orig/my_file.jpg` and the downsized JPG `thumb/sm/my_file.jpg`.
 
-## Requirements
+# Requirements
 
 Python 3. (Tested with Python 3.4.1 on Mac OS X 10.9.3.)
 
@@ -46,7 +46,7 @@ Relies on the following packages:
 * [Pillow](http://python-pillow.github.io/), the Python 3 PIL fork
 * [psd-tools](https://github.com/kmike/psd-tools)
 
-## Help
+# Help
 
 Command: `psdtojpg --help`
 
