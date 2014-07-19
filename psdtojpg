@@ -17,6 +17,7 @@ CONVERT_TO_CHAR = '→'
 
 
 def check_negative(value):
+    """Validates integers greater than or equal to 0."""
     try:
         ivalue = int(value)
     except ValueError:
@@ -29,6 +30,7 @@ def check_negative(value):
 
 
 def check_0_to_100(value):
+    """Validates integers from 0 to 100, inclusive."""
     try:
         ivalue = int(value)
     except ValueError:
@@ -41,6 +43,7 @@ def check_0_to_100(value):
 
 
 def parse_args():
+    """Parses the command line arguments and returns an args object."""
     parser = argparse.ArgumentParser(
         description='Convert PSD files to JPG images.')
 
@@ -81,10 +84,16 @@ def parse_args():
 
 
 def mkdir(path):
+    """Create a directory if it does not already exist."""
     os.makedirs(path, exist_ok=True)
 
 
 def downsize_by_height(*, width, height, new_height):
+    """
+    Given the original width and height of an image and a new target height,
+    return the new width and height. If the image would be larger than the
+    original, return the original size.
+    """
     if (height <= new_height):
         return (width, height)
     ratio = new_height / height
@@ -93,6 +102,11 @@ def downsize_by_height(*, width, height, new_height):
 
 
 def downsize_by_width(*, width, height, new_width):
+    """
+    Given the original width and height of an image and a new target width,
+    return the new width and height. If the image would be larger than the
+    original, return the original size.
+    """
     if (width <= new_width):
         return (width, height)
     ratio = new_width / width
@@ -102,6 +116,12 @@ def downsize_by_width(*, width, height, new_width):
 
 def convert_psd_to_jpg(psd_path, jpg_path, *,
                        quality, max_width=None, max_height=None):
+    """
+    Convert a PSD at a given path to a JPG at a given path.
+
+    Optional arguments for setting JPG quality from 0 to 100, max width in px,
+    and max height in px.
+    """
     print('%s %s %s' % (psd_path, CONVERT_TO_CHAR, jpg_path))
 
     img = PSDImage.load(psd_path).as_PIL()
@@ -131,6 +151,7 @@ def convert_psd_to_jpg(psd_path, jpg_path, *,
 
 
 def main():
+    """Parse arguments and process files passed to the script."""
     args = parse_args()
 
     output_originals = not args.no_originals
