@@ -11,7 +11,7 @@ from psd_tools import PSDImage
 DEFAULT_ORIGINAL_FOLDER = 'Converted/Original'
 DEFAULT_RESIZED_FOLDER = 'Converted/Resized'
 JPG_EXTENSION = '.jpg'
-OUTPUT_QUALITY = 80
+DEFAULT_OUTPUT_QUALITY = 90
 IMAGEOPTIM_CMD = 'imageOptim -d %s'
 CONVERT_TO_CHAR = '→'
 
@@ -59,7 +59,7 @@ def parse_args():
                              'in pixels.')
 
     parser.add_argument('-q', '--quality', type=check_0_to_100,
-                        default=OUTPUT_QUALITY,
+                        default=DEFAULT_OUTPUT_QUALITY,
                         help='The output quality of JPG files. Default is 80.')
 
     parser.add_argument('-o', '--optimize', action='store_true',
