@@ -1,5 +1,6 @@
-psdtojpg
-========
+# psdtojpg
+
+*Version 0.1.0*
 
 Convert one or more PSD files to JPG format. Thumbnail and optimize them, or don't.
 
