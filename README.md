@@ -19,23 +19,53 @@ After this, run `psdtojpg --help` from your terminal to verify it's installed pr
 
 ## Basic Conversion
 
-`psdtojpg my_file.psd` converts `my_file.psd` to `my_file.jpg` and puts it in the output directory `Converted/Original`.
+```
+psdtojpg my_file.psd
+```
+
+* `my_file.psd ➔ Converted/Original/my_file.jpg` (original size, default quality: 80)
 
 ## Downsizing Images
 
-`psdtojpg -w 640 -t 480 my_file.psd` converts `my_file.psd` to `my_file.jpg` and puts it in the output directory `Converted/Original`. It also creates `Converted/Resized/my_file.jpg` with a max size of 640x480, downsizing the image while preserving its aspect ratio.
+```
+psdtojpg -w 640 -t 480 my_file.psd
+```
 
-`psdtojpg -w 640 -t 480 -n my_file.psd` does the same as the above, except it does not output `Converted/Original/my_file.jpg`.
+* `my_file.psd ➔ Converted/Original/my_file.jpg` (original size)
+* `my_file.psd ➔ Converted/Resized/my_file.jpg` (max size: 640x480 px)
+
+---
+
+```
+psdtojpg -w 640 -t 480 -n my_file.psd
+```
+
+* `my_file.psd ➔ Converted/Resized/my_file.jpg` (max size: 640x480 px)
 
 ## Quality and Optimization
 
-`psdtojpg -q 60 my_file.psd` converts `my_file.psd` to `my_file.jpg` with JPG quality 60 and puts it in the output directory `Converted/Original`.
+```
+psdtojpg -q 60 my_file.psd
+```
 
-`psdtojpg -o my_file.psd` converts `my_file.psd` to `my_file.jpg` and puts it in the output directory `Converted/Original`, then optimizes it with [ImageOptim](https://imageoptim.com/).
+* `my_file.psd ➔ Converted/Original/my_file.jpg` (original size, quality: 60)
+
+---
+
+```
+psdtojpg -o my_file.psd
+```
+
+* `my_file.psd ➔ Converted/Original/my_file.jpg` (original size, optimized with [ImageOptim](https://imageoptim.com/))
 
 ## Custom Output Folders
 
-`psdtojpg -w 640 -t 480 -g orig -r thumb/sm my_file.psd` converts `my_file.psd` to the original size JPG `orig/my_file.jpg` and the downsized JPG `thumb/sm/my_file.jpg`.
+```
+psdtojpg -w 800 -t 600 -g orig -r thumb/sm my_file.psd
+```
+
+* `my_file.psd ➔ orig/my_file.jpg` (original size)
+* `my_file.psd ➔ thumb/sm/my_file.jpg` (max size: 800x600 px)
 
 # Requirements
 
@@ -45,6 +75,10 @@ Relies on the following packages:
 
 * [Pillow](http://python-pillow.github.io/), the Python 3 PIL fork
 * [psd-tools](https://github.com/kmike/psd-tools)
+
+Optional dependencies:
+
+* For image optimization on OS X: [ImageOptim CLI](https://github.com/JamieMason/ImageOptim-CLI)—install with `npm install -g imageoptim-cli`
 
 # Help
 
@@ -82,7 +116,7 @@ optional arguments:
 
 # Contributions
 
-Bug reports, fixes, or features? Feel free to open an issue or pull request any time. You can also tweet me at [@mplewis](http://twitter.com/mplewis) or email me at [matt@mplewis.com](mailto:matt@mplewis.com).
+Bug reports, fixes, or features? Feel free to open an issue or pull request any time. You can also tweet me at [mplewis](http://twitter.com/mplewis) or email me at [matt@mplewis.com](mailto:matt@mplewis.com).
 
 # License
 
